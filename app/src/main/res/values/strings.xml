@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Parents App</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_feedback">Feedback</string>
+    <string name="base_url">https://www.comega.in/demo/demokg/an_parent/</string>
+    <string name="image_url">https://www.comega.in/demo/demokg/images/</string>
+    <string name="loginUser">login.php</string>
+    <string name="getMessages">get_message.php</string>
+    <string name="get_gallery">https://www.comega.in/demo/demokg/an_parent/get_gallery.php</string>
+    <string name="get_van_nos">van_nos.php</string>
+    <string name="pictureBaseUrl">https://www.comega.in/demo/demokg/upload/</string>
+    <string name="getRoute">van_route.php</string>
+    <string name="sendFeedback">feedback.php</string>
+    <string name="getFeedback">view_feedback.php</string>
+    <string name="default_notification_channel_id">1</string>
+    <string name="updateDeviceId">updateDeviceId.php</string>
+    <string name="getotp">https://comega.in/demo/demokg/school/getotpstd.php</string>
+    <string name="updatePassword">https://comega.in/demo/demokg/school/entotpstd.php</string>
+    <string name="meeting_id">Meeting ID</string>
+    <string name="error_meeting_id">Please enter the Zoom meeting ID</string>
+</resources>

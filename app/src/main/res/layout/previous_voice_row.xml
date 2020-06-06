@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/user_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/circular_user_place_holder"
+                />
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/user_pic"
+                android:text="Teacher Name"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/name"
+                android:id="@+id/std"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/user_pic"
+                android:text="STD : LKG, UKG, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 "
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_below="@+id/std"
+                android:id="@+id/sec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/user_pic"
+                android:text="SEC : A, B, C, D, E, F, G, H, I, J, K"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/workoutPost"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:padding="10dp"
+                    android:background="@color/new_bg"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <SeekBar
+
+                        android:progress="10"
+                        android:progressBackgroundTint="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:id="@+id/play"
+                        android:padding="5dp"
+                        android:tint="@color/green"
+                        app:srcCompat="@drawable/ic_play_circle_filled_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/stop"
+                        android:padding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/red"
+                        app:srcCompat="@drawable/ic_stop_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:paddingLeft="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/name"
+                        android:layout_toRightOf="@+id/user_pic"
+                        android:text="VOICE SMS"
+                        android:textColor="@color/black"
+                        android:textSize="11dp" />
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/date"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/name"
+                        android:layout_toRightOf="@+id/user_pic"
+                        android:text="02:16 PM 15-FEB-2019"
+                        android:textColor="@color/gray"
+                        android:textSize="11dp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Messages" />
+
+    <item
+        android:id="@+id/track"
+        android:icon="@drawable/ic_directions_bus_black_24dp"
+        android:title="Track" />
+
+    <item
+        android:id="@+id/fees"
+        android:icon="@drawable/ic_receipt_black_24dp"
+        android:title="Fees" />
+
+    <item
+        android:id="@+id/marks"
+        android:icon="@drawable/ic_assessment_black_24dp"
+        android:title="Marks v4" />
+
+</menu>

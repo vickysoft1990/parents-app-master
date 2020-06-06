@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#880e4f</color>
+    <color name="logoColor">#5A263A</color>
+    <color name="primaryLightColor">#bc477b</color>
+    <color name="primaryDarkColor">#560027</color>
+    <color name="primaryTextColor">#ffffff</color>
+
+    <color name="itemIconTint">#D5D6D8</color>
+    <color name="backgroundColor">#302E40</color>
+    <color name="backgroundColorLight">#393452</color>
+    <color name="editTextBg">#252231</color>
+    <color name="textViewBg">#171624</color>
+    <color name="light_green">#00ee00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="purple">#800080</color>
+    <color name="maroon">#800000</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="lime">#00FF00</color>
+    <color name="teal">#008080</color>
+    <color name="green">#008000</color>
+    <color name="greenA">#4CAF50</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+    <color name="text_color">#454356</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="new_bg">#f9edeff5</color>
+    <color name="background_color_black">#1A1A1A</color>
+    <color name="transparent_black_light">#45000000</color>
+    <color name="transparent_black_bb">#bb000000</color>
+    <color name="transparent_black">#78000000</color>
+
+    <color name="tags_bg">#FAE4E6</color>
+    <color name="tags_text">#F05D72</color>
+
+    <color name="purple_dark">#351d50</color>
+    <color name="purple_light">#97668B</color>
+
+
+    <color name="blue_drawer">#00669c</color>
+
+    <color name="grey_six_six">#666666</color>
+    <color name="grey_eee">#eeeeee</color>
+    <color name="grey_light">#CCCCCC</color>
+    <color name="grey_light_very">#DDDDDD</color>
+
+    <color name="selector_default_green">#55BEBE27</color>
+    <color name="selector_default_blue">#553ebceb</color>
+
+    <color name="background">#EFEFEF</color>
+    <color name="placeholder_grey">#AAADC4</color>
+
+    <color name="light_blue">#3ebceb</color>
+    <color name="fade_color">#F26150</color>
+</resources>

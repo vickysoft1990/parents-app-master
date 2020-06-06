@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "934091396403",
+    "firebase_url": "https://parents-app-43bad.firebaseio.com",
+    "project_id": "parents-app-43bad",
+    "storage_bucket": "parents-app-43bad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934091396403:android:b3540bf1a35493b4",
+        "android_client_info": {
+          "package_name": "in.codeomega.parents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934091396403-h99m6bvhf7u0k9umntofkff8542me3ge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.codeomega.parents",
+            "certificate_hash": "06c0ceefc1deb4c940efb943825c1e61a606da6e"
+          }
+        },
+        {
+          "client_id": "934091396403-6uoroevd2ka48fkk14cvqp8qsuj3hp4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.codeomega.parents",
+            "certificate_hash": "aa383cb86b41060cdc678f9828d8e9a229bea834"
+          }
+        },
+        {
+          "client_id": "934091396403-97e8b19elnhp5si4j32v5a9648ldamrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAChrPc8FAwPzr-WmMausSefvEiJCY7x24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934091396403-97e8b19elnhp5si4j32v5a9648ldamrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

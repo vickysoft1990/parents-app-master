@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColorLight"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Audio Player"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+  <LinearLayout
+      android:padding="10dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <ProgressBar
+          android:visibility="visible"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:layout_marginTop="5dp"
+          style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+          android:indeterminate="true"
+          android:id="@+id/loading"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+      <SeekBar
+          android:visibility="gone"
+          android:layout_marginTop="5dp"
+          android:id="@+id/seekbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+      <LinearLayout
+          android:weightSum="2"
+          android:layout_marginTop="20dp"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <ImageView
+              android:visibility="gone"
+              android:id="@+id/play"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:tint="@color/green"
+              app:srcCompat="@drawable/ic_play_circle_filled_black_36dp" />
+
+          <ImageView
+              android:id="@+id/pause"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:tint="@color/maroon"
+              app:srcCompat="@drawable/ic_pause_circle_filled_black_36dp" />
+
+          <ImageView
+              android:id="@+id/close"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:tint="@color/red"
+              app:srcCompat="@drawable/ic_clear_black_36dp" />
+
+
+      </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>
