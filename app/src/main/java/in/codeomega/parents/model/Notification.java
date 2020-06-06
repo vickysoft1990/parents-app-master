@@ -9,7 +9,7 @@ public class Notification {
 
         if (voice_text.contains("voc")) {
 
-            this.message = message.replace("../","https://www.comega.in/demo/demokg/");;
+            this.message = message.replace("../","https://www.comega.in/schools/sdsbkd/");;
 
         }else if (voice_text.contains("txt")) {
 

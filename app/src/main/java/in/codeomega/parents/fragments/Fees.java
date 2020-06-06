@@ -187,7 +187,7 @@ public class Fees extends Fragment implements OnPageChangeListener, OnLoadComple
         currentFile.delete();
 
         Ion.with(getActivity())
-                .load("https://www.comega.in/demo/demokg/billing/fees.php?refid=" + AppController.getInstance().preferences.getString("user_id", "") + "&academic=" + AppController.getInstance().preferences.getString("academic_year", "") + "&fees")
+                .load("https://www.comega.in/schools/sdsbkd/billing/fees.php?refid=" + AppController.getInstance().preferences.getString("user_id", "") + "&academic=" + AppController.getInstance().preferences.getString("academic_year", "") + "&fees")
                 .write(currentFile)
                 .setCallback(new FutureCallback<File>() {
 
