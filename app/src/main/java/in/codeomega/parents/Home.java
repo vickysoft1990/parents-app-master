@@ -7,6 +7,7 @@ import in.codeomega.parents.fragments.Track;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +16,18 @@ import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,8 +37,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import in.codeomega.parents.fragments.ZoomMeetingID;
-import in.codeomega.parents.interfaces.Constants;
+import in.codeomega.parents.interfaces.ZoomConstants;
 import in.codeomega.parents.interfaces.DialogListener;
+import in.codeomega.parents.model.AvailMeetingDetailsBO;
 import us.zoom.sdk.InviteOptions;
 import us.zoom.sdk.JoinMeetingOptions;
 import us.zoom.sdk.JoinMeetingParams;
@@ -37,14 +51,12 @@ import us.zoom.sdk.ZoomSDKAuthenticationListener;
 import us.zoom.sdk.ZoomSDKInitParams;
 import us.zoom.sdk.ZoomSDKInitializeListener;
 
-import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -59,11 +71,18 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static in.codeomega.parents.interfaces.AppConstants.URLforAvailMeetings;
 
 
 public class Home extends AppCompatActivity implements Notification.OnFragmentInteractionListener, Fees.OnFragmentInteractionListener, Marks.OnFragmentInteractionListener, Track.OnFragmentInteractionListener,
-        Constants, DialogListener, ZoomSDKInitializeListener, MeetingServiceListener, ZoomSDKAuthenticationListener {
+        ZoomConstants, DialogListener, ZoomSDKInitializeListener, MeetingServiceListener, ZoomSDKAuthenticationListener {
 
     private TextView mTextMessage;
     int current_id = 0;
@@ -73,6 +92,8 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
     SeekBar dialogSeekbar;
     TextView toolbar_title;
     private DisplayMetrics displaymetrics;
+    private ArrayList<AvailMeetingDetailsBO> mAvailMeetingList;
+    ProgressDialog progressDialog;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -134,6 +155,7 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         }
         displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        progressDialog = AppController.getInstance().createProgressDialog(progressDialog, Home.this);
 
         audioPlayerDialog = new Dialog(Home.this);
         audioPlayerDialog.setContentView(R.layout.audio_player_popup);
@@ -185,12 +207,16 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         IVZoomLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getZoomMemberIDDialog ();
+                if(mAvailMeetingList.size() == 0)
+                    fetchDataForAvailableMeetings();
+                else
+                    getZoomMemberIDDialog();
             }
         });
+        mAvailMeetingList = new ArrayList<>();
 
         ZoomSDK zoomSDK = ZoomSDK.getInstance();
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             ZoomSDKInitParams initParams = new ZoomSDKInitParams();
             initParams.appKey = APP_KEY;
             initParams.appSecret = APP_SECRET;
@@ -341,9 +367,9 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         }
     }
 
-    private void getZoomMemberIDDialog () {
-        ZoomMeetingID zoomMeetingID = new ZoomMeetingID(Home.this);
-        if(!zoomMeetingID.isShowing()) {
+    private void getZoomMemberIDDialog() {
+        ZoomMeetingID zoomMeetingID = new ZoomMeetingID(Home.this, mAvailMeetingList);
+        if (!zoomMeetingID.isShowing()) {
             zoomMeetingID.show();
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             Window window = zoomMeetingID.getWindow();
@@ -358,7 +384,7 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
 
     public void initZoom(String meetingNo) {
         ZoomSDK zoomSDK = ZoomSDK.getInstance();
-        if(!zoomSDK.isInitialized()) {
+        if (!zoomSDK.isInitialized()) {
             Toast.makeText(this, "ZoomSDK has not been initialized successfully", Toast.LENGTH_LONG).show();
             return;
         }
@@ -423,8 +449,76 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
 
     @Override
     public void handleClose(boolean isDone, String meetingID) {
-        if(isDone && !meetingID.equals("")) {
+        if (isDone && !meetingID.equals("")) {
             initZoom(meetingID);
+        }
+    }
+
+    private void fetchDataForAvailableMeetings() {
+        mAvailMeetingList = new ArrayList<>();
+        try {
+            String url = URLforAvailMeetings + AppController.getInstance().preferences.getString("user_id", "");
+            url = url.replace(" ", "%20");
+            progressDialog.show();
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            AvailMeetingDetailsBO availMeetingDetailsBO = new AvailMeetingDetailsBO();
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            availMeetingDetailsBO.setRefId(jsonObject.optString("refid").trim());
+                            availMeetingDetailsBO.setMeetingId(jsonObject.optString("meeting_id").trim());
+                            availMeetingDetailsBO.setMeetingPwd(jsonObject.optString("password").trim());
+                            availMeetingDetailsBO.setEmpRefId(jsonObject.optString("emp_refid").trim());
+                            availMeetingDetailsBO.setDate(AppController.convertFromServerDateToRequestedFormat(jsonObject.optString("dated").trim(),"dd/MM/yyyy"));
+                            availMeetingDetailsBO.setUpdate(jsonObject.optString("upated").trim());
+                            availMeetingDetailsBO.setClassId(jsonObject.optString("class").trim());
+                            availMeetingDetailsBO.setSection(jsonObject.optString("section").trim());
+                            availMeetingDetailsBO.setStartingTime(jsonObject.optString("time").trim());
+                            availMeetingDetailsBO.setMeetingTitle(jsonObject.optString("title").trim());
+                            availMeetingDetailsBO.setName(jsonObject.optString("name").trim());
+                            availMeetingDetailsBO.setGender(jsonObject.optString("gender").trim());
+                            availMeetingDetailsBO.setClassName(jsonObject.optString("clsname").trim());
+                            availMeetingDetailsBO.setSectionName(jsonObject.optString("sec_name").trim());
+                            mAvailMeetingList.add(availMeetingDetailsBO);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
+                    getZoomMemberIDDialog();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
+                    String message = null;
+                    if (error instanceof NetworkError) {
+                        message = Message.NetworkError;
+                    } else if (error instanceof ServerError) {
+                        message = Message.ServerError;
+                    } else if (error instanceof AuthFailureError) {
+                        message = Message.AuthFailureError;
+                    } else if (error instanceof ParseError) {
+                        message = Message.ParseError;
+                    } else if (error instanceof NoConnectionError) {
+                        message = Message.NoConnectionError;
+                    } else if (error instanceof TimeoutError) {
+                        message = Message.TimeOutError;
+                    }
+                    Toast.makeText(Home.this, message, Toast.LENGTH_SHORT).show();
+                }
+            });
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            stringRequest.setShouldCache(true);
+            requestQueue.add(stringRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

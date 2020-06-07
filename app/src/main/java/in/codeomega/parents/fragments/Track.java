@@ -55,6 +55,9 @@ import in.codeomega.parents.AppController;
 import in.codeomega.parents.R;
 import in.codeomega.parents.model.Van;
 
+import static in.codeomega.parents.interfaces.AppConstants.URLforGetRoute;
+import static in.codeomega.parents.interfaces.AppConstants.URLforGetVanNo;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -187,9 +190,7 @@ public class Track extends Fragment implements OnMapReadyCallback {
 
         progressDialog.show();
 
-        Log.e("getRoute", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.getRoute));
-
-        StringRequest getRoute = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.getRoute), new Response.Listener<String>() {
+        StringRequest getRoute = new StringRequest(Request.Method.POST, URLforGetRoute, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -346,9 +347,7 @@ public class Track extends Fragment implements OnMapReadyCallback {
 
         progressDialog.show();
 
-        Log.e("get_van_nos", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.get_van_nos));
-
-        StringRequest get_van_nos = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.get_van_nos), new Response.Listener<String>() {
+        StringRequest get_van_nos = new StringRequest(Request.Method.POST, URLforGetVanNo, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

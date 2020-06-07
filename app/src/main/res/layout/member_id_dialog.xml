@@ -5,7 +5,6 @@
     android:id="@+id/root"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/tv_supplier_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -13,62 +12,104 @@
         android:gravity="center"
         android:minHeight="40dp"
         android:padding="5dp"
-        android:text="Zoom Meeting"
-        android:textColor="@color/teal"
+        android:text="Online Classes"
+        android:textColor="@color/primaryDarkColor"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:background="@color/grey_light" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_member_no"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp">
-        <EditText
-            android:id="@+id/etMemberId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Meeting Number"
-            android:inputType="text"
-            android:maxLength="25"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="5dp">
-
-        <Button
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/btn_cancel"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="Cancel"
-            android:textColor="@color/black"/>
-
-        <Button
+            android:gravity="center|start"
+            android:maxLines="1"
+            android:id="@+id/tvAvailClassess"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:padding="2dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textColor="@color/primaryLightColor"
+            android:text="Available Classes"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:layout_weight="1"
+            android:dividerHeight="1px"
+            android:divider="@color/backgroundColorLight"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:id="@+id/listOfAvailMeetings"/>
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/btn_submit"
+            android:gravity="center|start"
+            android:maxLines="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:padding="2dp"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textColor="@color/primaryLightColor"
+            android:text="Join Online Class by Meeting ID"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_member_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+            <EditText
+                android:id="@+id/etMemberId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Meeting ID"
+                android:inputType="text"
+                android:maxLength="25" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="Submit"
-            android:textColor="@color/black"/>
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
 
+            <Button
+                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/btn_cancel"
+                android:background="@drawable/circular_green"                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Cancel"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/btn_submit"
+                android:background="@drawable/circular_green"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Submit"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

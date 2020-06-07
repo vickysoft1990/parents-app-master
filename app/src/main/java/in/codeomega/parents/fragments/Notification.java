@@ -32,9 +32,11 @@ import us.zoom.sdk.ZoomSDK;
 import us.zoom.sdk.ZoomSDKInitParams;
 import us.zoom.sdk.ZoomSDKInitializeListener;
 
-import static in.codeomega.parents.interfaces.Constants.APP_KEY;
-import static in.codeomega.parents.interfaces.Constants.APP_SECRET;
-import static in.codeomega.parents.interfaces.Constants.WEB_DOMAIN;
+import static in.codeomega.parents.interfaces.AppConstants.URLforNotification;
+import static in.codeomega.parents.interfaces.AppConstants.URLforPictureBaseURL;
+import static in.codeomega.parents.interfaces.ZoomConstants.APP_KEY;
+import static in.codeomega.parents.interfaces.ZoomConstants.APP_SECRET;
+import static in.codeomega.parents.interfaces.ZoomConstants.WEB_DOMAIN;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,9 +123,7 @@ public class Notification extends Fragment implements ZoomSDKInitializeListener 
 
         progressDialog.show();
 
-        Log.e("getMessages", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.getMessages));
-
-        StringRequest getMessages = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.getMessages), new Response.Listener<String>() {
+        StringRequest getMessages = new StringRequest(Request.Method.POST, URLforNotification, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -140,7 +140,7 @@ public class Notification extends Fragment implements ZoomSDKInitializeListener 
                         JSONArray responseJsonArray =  jsonObject.getJSONArray("response");
 
                         String message,message_type,name,pic,voice_text,date,class_names,section_names;
-                        String baseUrl = getResources().getString(R.string.pictureBaseUrl);
+                        String baseUrl = URLforPictureBaseURL;
 
                         for (int i = 0; i < responseJsonArray.length() ; i++) {
 

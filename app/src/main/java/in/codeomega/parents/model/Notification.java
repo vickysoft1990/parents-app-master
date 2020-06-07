@@ -1,6 +1,8 @@
 package in.codeomega.parents.model;
 
 
+import static in.codeomega.parents.interfaces.AppConstants.WEB_DOMAIN;
+
 public class Notification {
 
     public String message,message_type,name,pic,voice_text,date,class_names,section_names;
@@ -9,7 +11,7 @@ public class Notification {
 
         if (voice_text.contains("voc")) {
 
-            this.message = message.replace("../","https://www.comega.in/demo/demokg/");;
+            this.message = message.replace("../",WEB_DOMAIN);
 
         }else if (voice_text.contains("txt")) {
 

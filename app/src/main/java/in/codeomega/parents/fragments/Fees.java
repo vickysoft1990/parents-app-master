@@ -31,6 +31,8 @@ import java.io.InputStream;
 import in.codeomega.parents.AppController;
 import in.codeomega.parents.R;
 
+import static in.codeomega.parents.interfaces.AppConstants.URLforFees;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -187,7 +189,7 @@ public class Fees extends Fragment implements OnPageChangeListener, OnLoadComple
         currentFile.delete();
 
         Ion.with(getActivity())
-                .load("https://www.comega.in/demo/demokg/billing/fees.php?refid=" + AppController.getInstance().preferences.getString("user_id", "") + "&academic=" + AppController.getInstance().preferences.getString("academic_year", "") + "&fees")
+                .load(URLforFees + AppController.getInstance().preferences.getString("user_id", "") + "&academic=" + AppController.getInstance().preferences.getString("academic_year", "") + "&fees")
                 .write(currentFile)
                 .setCallback(new FutureCallback<File>() {
 

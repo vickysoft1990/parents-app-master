@@ -24,6 +24,8 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import static in.codeomega.parents.interfaces.AppConstants.URLforSendFeedback;
+
 public class Feedback extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -83,9 +85,7 @@ public class Feedback extends AppCompatActivity {
 
         progressDialog.show();
 
-        Log.e("sendFeedback", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.sendFeedback));
-
-        StringRequest sendFeedback = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.sendFeedback), new Response.Listener<String>() {
+        StringRequest sendFeedback = new StringRequest(Request.Method.POST, URLforSendFeedback, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

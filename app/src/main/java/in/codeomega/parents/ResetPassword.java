@@ -26,6 +26,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static in.codeomega.parents.interfaces.AppConstants.URLforUpdatePassword;
+
 public class ResetPassword extends AppCompatActivity {
 
     TextView phoneNumber;
@@ -89,9 +91,7 @@ public class ResetPassword extends AppCompatActivity {
 
         progressDialog.show();
 
-        Log.e("updatePassword", getResources().getString(R.string.updatePassword));
-
-        StringRequest updatePassword = new StringRequest(Request.Method.POST, getResources().getString(R.string.updatePassword), new Response.Listener<String>() {
+        StringRequest updatePassword = new StringRequest(Request.Method.POST, URLforUpdatePassword, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

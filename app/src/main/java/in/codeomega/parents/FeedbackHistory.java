@@ -31,6 +31,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import in.codeomega.parents.adapters.FeedbackAdapter;
 import in.codeomega.parents.model.Feedback;
 
+import static in.codeomega.parents.interfaces.AppConstants.URLforGetFeedback;
+
 public class FeedbackHistory extends AppCompatActivity {
 
     ProgressDialog progressDialog = null;
@@ -93,9 +95,7 @@ public class FeedbackHistory extends AppCompatActivity {
 
         progressDialog.show();
 
-        Log.e("getFeedback", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.getFeedback));
-
-        StringRequest getFeedback = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.getFeedback), new Response.Listener<String>() {
+        StringRequest getFeedback = new StringRequest(Request.Method.POST, URLforGetFeedback, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

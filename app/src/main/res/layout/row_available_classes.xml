@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".9"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMeetingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|start"
+                android:maxLines="3"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:text="Meeting Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMeetingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:text="Date and Time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:text="Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvClassStdSec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:text="STD and SEC:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvMeetingID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:text="Meeting ID:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvMeetingPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:text="Password:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btAttend"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight=".1"
+            android:background="@drawable/circular_primary"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="Attend"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -54,8 +54,13 @@ import com.google.firebase.FirebaseApp;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import static in.codeomega.parents.interfaces.AppConstants.URLforUpdateDeviceID;
 
 public class AppController extends Application {
 
@@ -410,9 +415,7 @@ public class AppController extends Application {
 
     public void update_did() {
 
-        Log.e("updateDeviceId", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.updateDeviceId));
-
-        StringRequest updateDeviceId = new StringRequest(Request.Method.POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.updateDeviceId), new Response.Listener<String>() {
+        StringRequest updateDeviceId = new StringRequest(Request.Method.POST, URLforUpdateDeviceID, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -546,6 +549,36 @@ public class AppController extends Application {
         notificationManager.notify(notification_count /* ID of notification */, notificationBuilder.build());
         notification_count++;
     }
+
+    public static String convertFromServerDateToRequestedFormat(String dateInput, String outDateFormat) {
+        String outDate;
+        String  serverDateFormat = "yyyy-MM-dd";
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat(serverDateFormat, Locale.ENGLISH);
+            if (outDateFormat.equals(serverDateFormat)) {
+                return dateInput;
+            } else {
+                Date date = sdf.parse(dateInput);
+                sdf = new SimpleDateFormat(outDateFormat, Locale.ENGLISH);
+                outDate = sdf.format(date);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+                Date date = sdf.parse(dateInput);
+                sdf = new SimpleDateFormat(outDateFormat, Locale.ENGLISH);
+                outDate = sdf.format(date);
+                return outDate;
+            } catch (Exception e1) {
+                e.printStackTrace();
+                return dateInput;
+            }
+        }
+        return outDate;
+    }
+
 
 
     public void setRetryPolicies(StringRequest stringRequest) {

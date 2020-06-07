@@ -60,4 +60,9 @@
 
     <color name="light_blue">#3ebceb</color>
     <color name="fade_color">#F26150</color>
+
+    <!-- New Design - Button Color -->
+    <color name="btn_round_green">#83c341</color>
+    <color name="btn_round_grey">#f2f2f2</color>
+    <color name="btn_round_text_color">#ffffff</color>
 </resources>

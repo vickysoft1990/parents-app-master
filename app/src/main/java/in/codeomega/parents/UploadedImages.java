@@ -30,7 +30,11 @@ import java.util.Map;
 import in.codeomega.parents.AppController;
 import in.codeomega.parents.R;
 import in.codeomega.parents.adapters.ImageAdapter;
- 
+
+import static in.codeomega.parents.interfaces.AppConstants.URLforGallery;
+import static in.codeomega.parents.interfaces.AppConstants.URLforImages;
+import static in.codeomega.parents.interfaces.AppConstants.URLforPictureBaseURL;
+
 public class UploadedImages extends AppCompatActivity {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,9 +78,7 @@ public class UploadedImages extends AppCompatActivity {
 
         progressDialog.show();
 
-        Log.e("getMessages", "" + getResources().getString(R.string.get_gallery));
-
-        StringRequest getMessages = new StringRequest(Request.Method.POST,   getResources().getString(R.string.get_gallery), new Response.Listener<String>() {
+        StringRequest getMessages = new StringRequest(Request.Method.POST,   URLforGallery, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -93,8 +95,8 @@ public class UploadedImages extends AppCompatActivity {
                         JSONArray responseJsonArray =  jsonObject.getJSONArray("response");
 
                         String image,title,imgType,class_names,section_names,description,youtubelink,name,pic;
-                        String baseUrl = getResources().getString(R.string.pictureBaseUrl);
-                        String imageUrl = getResources().getString(R.string.image_url);
+                        String baseUrl = URLforPictureBaseURL;
+                        String imageUrl = URLforImages;
 
                         for (int i = 0; i < responseJsonArray.length() ; i++) {
 

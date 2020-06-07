@@ -31,6 +31,8 @@ import java.util.Map;
 import static android.util.Log.e;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.android.volley.Request.Method.POST;
+import static in.codeomega.parents.interfaces.AppConstants.URLforGetOTP;
+import static in.codeomega.parents.interfaces.AppConstants.URLforLoginUser;
 
 public class Login extends AppCompatActivity {
 
@@ -140,9 +142,7 @@ public class Login extends AppCompatActivity {
 
         progressDialog.show();
 
-        e("getOTP", getResources().getString(R.string.getotp));
-
-        StringRequest getOTP = new StringRequest(POST, getResources().getString(R.string.getotp), new Response.Listener<String>() {
+        StringRequest getOTP = new StringRequest(POST,URLforGetOTP, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -218,9 +218,7 @@ public class Login extends AppCompatActivity {
 
         progressDialog.show();
 
-        e("loginUser", "" + getResources().getString(R.string.base_url) + getResources().getString(R.string.loginUser));
-
-        StringRequest loginUser = new StringRequest(POST, getResources().getString(R.string.base_url) + getResources().getString(R.string.loginUser), new Response.Listener<String>() {
+        StringRequest loginUser = new StringRequest(POST, URLforLoginUser, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

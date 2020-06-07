@@ -1,6 +1,6 @@
 package in.codeomega.parents.interfaces;
 
-public interface Constants {
+public interface ZoomConstants {
 
 
     // TODO Change it to your web domain
