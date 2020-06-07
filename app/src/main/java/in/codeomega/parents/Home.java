@@ -186,6 +186,7 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAvailMeetingList.clear();
                 startActivity(new Intent(Home.this, FeedbackHistory.class));
             }
         });
@@ -193,6 +194,7 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAvailMeetingList.clear();
                 startActivity(new Intent(Home.this, Profile.class));
             }
         });
@@ -200,6 +202,7 @@ public class Home extends AppCompatActivity implements Notification.OnFragmentIn
         images.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAvailMeetingList.clear();
                 startActivity(new Intent(Home.this, UploadedImages.class));
             }
         });

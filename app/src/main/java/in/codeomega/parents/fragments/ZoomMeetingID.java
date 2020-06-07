@@ -136,7 +136,11 @@ public class ZoomMeetingID extends Dialog {
             String stdSec = "STD: "+holder.meetingDetailsBO.getClassId()+", SEC: "+holder.meetingDetailsBO.getSectionName();
             holder.TVStdSec.setText(stdSec);
             holder.TVMeetingID.setText("Meeting ID: "+holder.meetingDetailsBO.getMeetingId());
-            holder.TVMeetingPwd.setText("Password: "+holder.meetingDetailsBO.getMeetingPwd());
+            if(!holder.meetingDetailsBO.getMeetingPwd().isEmpty()) {
+                holder.TVMeetingPwd.setText("Password: " + holder.meetingDetailsBO.getMeetingPwd());
+            } else {
+                holder.TVMeetingPwd.setVisibility(View.GONE);
+            }
 
             holder.TVDateTime.setText(holder.meetingDetailsBO.getDate()+" "+holder.meetingDetailsBO.getStartingTime());
 

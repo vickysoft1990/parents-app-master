@@ -44,7 +44,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="horizontal">
 
                 <TextView
@@ -81,6 +81,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="2dp"
+                android:visibility="gone"
                 android:textColor="@color/black"
                 android:text="Meeting ID:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"

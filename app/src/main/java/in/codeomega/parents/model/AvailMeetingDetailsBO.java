@@ -2,8 +2,8 @@ package in.codeomega.parents.model;
 
 public class AvailMeetingDetailsBO {
 
-    private String refId,meetingId, meetingPwd, empRefId, date, update, classId,section, startingTime;
-    private String meetingTitle, Name, gender, className, sectionName;
+    private String refId = "",meetingId = "", meetingPwd = "", empRefId = "", date = "", update = "", classId = "",section = "", startingTime = "";
+    private String meetingTitle = "", Name = "", gender = "", className = "", sectionName = "";
 
     public String getRefId() {
         return refId;
